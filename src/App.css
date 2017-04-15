@@ -1,0 +1,60 @@
+.AppContent {
+  padding: 36px;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 85%;
+}
+
+th, td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  color: rgba(1,1,1,0.5);
+  font-size: 15px;
+}
+
+td {
+  color: rgba(1,1,1,0.8);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+table .numeric {
+  text-align: right;
+}
+
+table input.numeric {
+  width: 84px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+}
+
+.qty {
+  text-align: right;
+  flex: 1;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+ul {
+  padding: 0px;
+}
+
+li {
+  height: 36px;
+}
