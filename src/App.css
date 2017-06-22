@@ -1,27 +1,52 @@
 .AppContent {
-  padding: 36px;
+  padding: 36px 64px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  color: rgba(1, 1, 1, 0.87);
 }
 
+.nav-button {
+  background: Transparent;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  border-bottom: 4px solid Transparent;
+  padding: 0 12px;
+  outline: none;
+}
+
+.nav-button:focus {
+  color: red;
+}
+
+.active {
+  border-bottom: 4px solid #fff;
+}
 
 table {
   border-collapse: collapse;
-  width: 85%;
+  width: 100%;
+}
+
+tr {
+  border-bottom: 1px solid #ddd;
+}
+
+tbody > tr:last-child {
+  border: none;
 }
 
 th, td {
   padding: 8px;
-  border-bottom: 1px solid #ddd;
   text-align: left;
   color: rgba(1,1,1,0.5);
-  font-size: 15px;
+  font-size: 13px;
+  height: 32px;
 }
 
 td {
   color: rgba(1,1,1,0.8);
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 14px;
 }
 
 table .numeric {
@@ -30,6 +55,23 @@ table .numeric {
 
 table input.numeric {
   width: 84px;
+}
+
+.card {
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 2px 16px;
+  border-radius: 2px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.card-header > * {
+  margin: 16px 0;
 }
 
 ul {
@@ -46,9 +88,18 @@ li {
   flex: 1;
 }
 
+.order {
+  flex: 1;
+  padding-left: 86px;
+}
+
+.empty-message {
+  color: rgba(1, 1, 1, 0.54);
+}
+
 h1 {
   font-size: 24px;
-  font-weight: 300;
+  color: #607D8B;
 }
 
 ul {
