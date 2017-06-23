@@ -8,19 +8,20 @@
 .nav-button {
   background: Transparent;
   border: none;
-  color: #fff;
+  color: #ddd;
   font-size: 18px;
   border-bottom: 4px solid Transparent;
   padding: 0 12px;
   outline: none;
 }
 
-.nav-button:focus {
-  color: red;
+.nav-button:focus, .nav-button:hover {
+  background: rgba(1,1,1,0.1);
 }
 
 .active {
   border-bottom: 4px solid #fff;
+  color: #fff;
 }
 
 table {

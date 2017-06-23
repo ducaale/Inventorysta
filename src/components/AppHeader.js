@@ -1,17 +1,29 @@
 import { AppBar } from 'material-ui'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import PageLink from './PageLink'
 
 import React from 'react'
 import { connect } from 'react-redux'
 
-let AppHeader = ({restockMode, sellMode}) => {
+let AppHeader = ({inventoryPage}) => {
+
+  const color = (inventoryPage) => {
+    switch(inventoryPage) {
+      case 'SELL_PAGE':
+        return "#0097A7"
+      case 'BUY_PAGE':
+        return "#009688"
+      case 'HISTORY_PAGE':
+        return "#607D8B"
+    }
+  }
 
   const style = {
     title : {
       marginLeft: 36,
     },
     bar : {
-      background: "#607D8B",
+      background: color(inventoryPage),
       paddingRight: 60
     }
   }
@@ -22,28 +34,12 @@ let AppHeader = ({restockMode, sellMode}) => {
         showMenuIconButton={false}
         titleStyle={style.title}
         style={style.bar}>
-        <button className="nav-button active" onClick={restockMode}>Buy</button>
-        <button className="nav-button" onClick={sellMode}>Sell</button>
-        <button className="nav-button">History</button>
+        <PageLink page="BUY_PAGE">Buy</PageLink>
+        <PageLink page="SELL_PAGE">Sell</PageLink>
+        <PageLink page="HISTORY_PAGE">History</PageLink>
       </AppBar>
     </MuiThemeProvider>
   )
 }
 
-const mapStateToProps = (state) => state;
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    sellMode: () => dispatch({
-      type: 'SET_MODE',
-      mode: 'SELL_MODE'
-    }),
-    restockMode: () => dispatch({
-      type: 'SET_MODE',
-      mode: 'RESUPPLY_MODE'
-    }),
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(AppHeader)
+export default connect(state => state, null)(AppHeader)

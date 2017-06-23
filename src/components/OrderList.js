@@ -2,40 +2,45 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { RaisedButton } from 'material-ui'
 import { OrderItem } from './OrderItem'
 import { partial } from '../lib/utils'
+import { resetSelection, submitOrder, submitResupply } from '../actions'
 
 import React from 'react'
 import { connect } from 'react-redux'
 
-const getOrderedItems = (items, inventoryMode) => { 
-  if(inventoryMode === 'SELL_MODE')
-    return items.filter(item => item.order > 0)
-  else
-    return items.filter(items => items.supply > 0)
-}
+export const OrderList = ({
+  selectedItems,
+  inventoryPage,
+  handleRemoveSelected,
+  handleSubmitOrder,
+  handleSubmitResupply
+}) => {
 
-export const OrderList = ({orderedItems, inventoryMode, handleRemoveOrder, handleSubmitOrder}) => {
   const buttonStyle = {
     float: "right",
   }
+
+  const handleClick = inventoryPage === 'SELL_PAGE' ? handleSubmitOrder : handleSubmitResupply
+
   return (
     <div className="order">
       <MuiThemeProvider>
         <div>
-          <h1>{inventoryMode === 'SELL_MODE' ? 'Check-out List' : 'Check-in List'}</h1>
+          <h1>{inventoryPage === 'SELL_PAGE' ? 'Check-out List' : 'Check-in List'}</h1>
 
-          { orderedItems.length > 0 ? <ul>
-            {orderedItems.map(item =>
+          { selectedItems.length > 0 ? <ul>
+            {selectedItems.map(item =>
               <OrderItem {...item}
                 key={item.id}
-                handleRemoveOrder={partial(handleRemoveOrder, item.id)} />
+                handleRemoveSelected={partial(handleRemoveSelected, item.id)}
+              />
             )}
           </ul> : <p className="empty-message">check-out items will appear here</p>}
 
-          {orderedItems.length > 0 ?
+          {selectedItems.length > 0 ?
           <RaisedButton label="submit"
             style={buttonStyle}
             primary={true}
-            onClick={handleSubmitOrder} /> : null}
+            onClick={handleClick} /> : null}
         </div>
       </MuiThemeProvider>
     </div>
@@ -44,15 +49,16 @@ export const OrderList = ({orderedItems, inventoryMode, handleRemoveOrder, handl
 
 const mapStateToProps = (state) => {
   return {
-    orderedItems: getOrderedItems(state.items, state.inventoryMode),
-    inventoryMode: state.inventoryMode
+    selectedItems: state.items.filter(item => item.selected > 0),
+    inventoryPage: state.inventoryPage
   }
 } 
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleRemoveOrder: (id) => dispatch({ type: 'RESET_ORDER', id }),
-    handleSubmitOrder: () => dispatch({ type: 'SUBMIT_ORDER' })
+    handleRemoveSelected: (id) => dispatch(resetSelection(id)),
+    handleSubmitOrder: () => dispatch(submitOrder()),
+    handleSubmitResupply: () => dispatch(submitResupply()),
   }
 }
 

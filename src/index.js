@@ -4,9 +4,9 @@ import App from './App'
 import './index.css'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
-import { items, inventoryMode } from './reducers'
+import { items, inventoryPage } from './reducers'
 
-const reducer = combineReducers({items, inventoryMode})
+const reducer = combineReducers({items, inventoryPage})
 const store = createStore(reducer)
 
 ReactDOM.render(

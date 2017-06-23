@@ -1,21 +1,15 @@
 import React from 'react'
 
-export const InventoryItem = (props) => {
+export const InventoryItem = ({name, unitPrice, qty, selected, handleInputChange}) => {
   return (
     <tr>
-      <td>{props.name}</td>
-      <td className="numeric">{props.unitPrice}</td>
-      <td className="numeric">{props.qty - props.order}</td>
+      <td>{name}</td>
+      <td className="numeric">{unitPrice}</td>
+      <td className="numeric">{qty}</td>
       <td className="numeric">
-        {props.inventoryMode==='SELL_MODE'? 
-        <input type="number" value={props.order}
+        <input type="number" value={selected}
           className="numeric"
-          onChange={props.handleOrderChange}/>
-            :
-        <input type="number" value={props.supply}
-          className="numeric"
-          onChange={props.handleSupplyChange}/>
-        }
+          onChange={handleInputChange}/>
       </td>
     </tr>
   )

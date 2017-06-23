@@ -2,7 +2,7 @@ import React from 'react'
 
 import injectTapEventPlugin from 'react-tap-event-plugin'; injectTapEventPlugin();
 
-import AppHeader from './components/AppHeader'
+import AppHeader  from './components/AppHeader'
 import OrderList from './components/OrderList'
 import InventoryList from './components/InventoryList'
 

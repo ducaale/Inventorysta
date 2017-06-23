@@ -3,14 +3,14 @@ import Cancel from 'material-ui/svg-icons/navigation/cancel'
 import { IconButton } from 'material-ui'
 import React from 'react'
 
-export const OrderItem = (props) => {
+export const OrderItem = ({name, selected, handleRemoveSelected}) => {
   return (
     <li>
-      <IconButton onClick={props.handleRemoveOrder}>
+      <IconButton onClick={handleRemoveSelected}>
         <Cancel color={grey500}/>
       </IconButton>
-      <span className="order-item">{props.name}</span>
-      <span className="qty">{props.order}</span>
+      <span className="order-item">{name}</span>
+      <span className="qty">{selected}</span>
     </li>
   )
 }
