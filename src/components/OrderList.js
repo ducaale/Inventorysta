@@ -19,13 +19,14 @@ export const OrderList = ({
     float: "right",
   }
 
+  const header = inventoryPage === 'SELL_PAGE' ? 'Check-out' : 'Check-in'
   const handleClick = inventoryPage === 'SELL_PAGE' ? handleSubmitOrder : handleSubmitResupply
 
   return (
     <div className="order">
       <MuiThemeProvider>
         <div>
-          <h1>{inventoryPage === 'SELL_PAGE' ? 'Check-out List' : 'Check-in List'}</h1>
+          <h1>{`${header} List`}</h1>
 
           { selectedItems.length > 0 ? <ul>
             {selectedItems.map(item =>
@@ -34,10 +35,10 @@ export const OrderList = ({
                 handleRemoveSelected={partial(handleRemoveSelected, item.id)}
               />
             )}
-          </ul> : <p className="empty-message">check-out items will appear here</p>}
+          </ul> : <p className="empty-message">{`${header} items will appear here`}</p>}
 
           {selectedItems.length > 0 ?
-          <RaisedButton label="submit"
+          <RaisedButton label="save"
             style={buttonStyle}
             primary={true}
             onClick={handleClick} /> : null}
