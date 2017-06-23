@@ -6,7 +6,7 @@ import React from 'react'
 export const OrderItem = ({name, selected, handleRemoveSelected}) => {
   return (
     <li>
-      <IconButton onClick={handleRemoveSelected}>
+      <IconButton onClick={handleRemoveSelected} aria-label="cancel">
         <Cancel color={grey500}/>
       </IconButton>
       <span className="order-item">{name}</span>
