@@ -19,6 +19,7 @@ let InventoryList = ({items, inventoryMode, handleInputChange}) => {
           <thead>
             <tr>
               <th>Item</th>
+              <th className="numeric">Unit Cost</th>
               <th className="numeric">Unit Price</th>
               <th className="numeric">Quantity</th>
               <th className="numeric">Selected</th>

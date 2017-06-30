@@ -20,6 +20,7 @@ const item = (state, action) => {
         id: action.id,
         name: action.name,
         qty: action.qty,
+        unitCost: action.unitCost,
         unitPrice: action.unitPrice,
         selected: 0
       }
