@@ -9,6 +9,10 @@ import { items, inventoryPage, addItemDialog } from './reducers'
 const reducer = combineReducers({items, inventoryPage, addItemDialog})
 const store = createStore(reducer)
 
+store.subscribe(() => {
+  localStorage.setItem('items', JSON.stringify(store.getState().items))
+})
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

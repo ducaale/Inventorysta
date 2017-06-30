@@ -1,12 +1,6 @@
-const initialState = [
-  { id: 1, name: 'bir24cm', unitCost: 300, unitPrice: 300, qty: 500, selected: 0 },
-  { id: 2, name: 'bir24cm', unitCost: 300, unitPrice: 300, qty: 500, selected: 0 },
-  { id: 3, name: 'bir24cm', unitCost: 300, unitPrice: 300, qty: 500, selected: 0 },
-  { id: 4, name: 'bir24cm', unitCost: 300, unitPrice: 300, qty: 500, selected: 0 },
-  { id: 5, name: 'bir24cm', unitCost: 300, unitPrice: 300, qty: 500, selected: 0 },
-]
+const initialState = JSON.parse(localStorage.getItem('items')) || []
 
-let id = 13
+let id = 1
 
 const item = (state, action) => {
   switch(action.type) {
