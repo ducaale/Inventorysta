@@ -40,7 +40,7 @@ export const OrderList = ({
           {selectedItems.length > 0 ?
           <RaisedButton label="save"
             style={buttonStyle}
-            primary={true}
+            labelColor="#00BCD4"
             onClick={handleClick} /> : null}
         </div>
       </MuiThemeProvider>

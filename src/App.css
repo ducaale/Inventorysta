@@ -79,7 +79,7 @@ ul {
   list-style: none;
 }
 
-li {
+li, .card-header {
   display: flex;
   align-items: center;
 }

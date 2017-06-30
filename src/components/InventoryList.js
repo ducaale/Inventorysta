@@ -2,10 +2,12 @@ import { InventoryItem } from './InventoryItem'
 import { partial } from '../lib/utils'
 import { changeSelected } from '../actions'
 
+import ItemAdder  from './ItemAdder'
+
 import React from 'react'
 import { connect } from 'react-redux'
 
-let InventoryList = ({items, inventoryMode, handleInputChange}) => {
+let InventoryList = ({items, handleInputChange}) => {
   const style = {
     flex: 2
   }
@@ -14,6 +16,7 @@ let InventoryList = ({items, inventoryMode, handleInputChange}) => {
       <div className="card">
         <div className="card-header">
           <h1>Inventory</h1>
+          <ItemAdder />
         </div>
         <table>
           <thead>
