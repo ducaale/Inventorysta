@@ -1,6 +1,6 @@
 const initialState = JSON.parse(localStorage.getItem('items')) || []
 
-let id = 1
+let id = initialState.length > 0 ? initialState[initialState.length - 1].id + 1 : 1
 
 const item = (state, action) => {
   switch(action.type) {
@@ -8,9 +8,9 @@ const item = (state, action) => {
       return {
         id: id++,
         name: action.name,
-        qty: action.qty,
-        unitCost: action.unitCost,
-        unitPrice: action.unitPrice,
+        qty: parseInt(action.qty, 10),
+        unitCost: parseFloat(action.unitCost, 10),
+        unitPrice: parseFloat(action.unitPrice, 10),
         selected: 0
       }
     case 'RESET_SELECTION':
