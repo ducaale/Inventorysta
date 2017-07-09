@@ -50,7 +50,7 @@ export const OrderList = ({
 
 const mapStateToProps = (state) => {
   return {
-    selectedItems: state.items.filter(item => item.selected > 0),
+    selectedItems: state.items.filter(item => item.selectedAmount > 0),
     inventoryPage: state.inventoryPage
   }
 } 

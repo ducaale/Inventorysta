@@ -65,7 +65,7 @@ table input.numeric {
   border-radius: 2px;
 }
 
-.card-header {
+.card-header, .card-header * {
   display: flex;
   justify-content: space-between;
   align-content: center;

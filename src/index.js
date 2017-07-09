@@ -4,9 +4,9 @@ import App from './App'
 import './index.css'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
-import { items, inventoryPage, addItemDialog } from './reducers'
+import { items, inventoryPage, addItemDialog, editItemDialog } from './reducers'
 
-const reducer = combineReducers({items, inventoryPage, addItemDialog})
+const reducer = combineReducers({items, inventoryPage, addItemDialog, editItemDialog})
 const store = createStore(reducer)
 
 store.subscribe(() => {

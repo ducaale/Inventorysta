@@ -13,7 +13,7 @@ let ItemAdder = ({addItemDialog, handleToggleDialog, handleAddItem}) => {
   return (
     <MuiThemeProvider>
       <div>
-        <IconButton aria-label="add" tooltip="Add" onTouchTap={handleToggleDialog}>
+        <IconButton aria-label="add" tooltip="add" onTouchTap={handleToggleDialog}>
           <Add color={grey500}/>
         </IconButton>
         <AddDialog open={addItemDialog} 

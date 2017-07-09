@@ -1,13 +1,19 @@
 import { InventoryItem } from './InventoryItem'
 import { partial } from '../lib/utils'
-import { changeSelected } from '../actions'
+import { changeSelected, toggleSelectItem } from '../actions'
+
 
 import ItemAdder  from './ItemAdder'
+import ItemRemover from './ItemRemover'
+import ItemEditor from './ItemEditor'
+import { ItemSelector } from './ItemSelector'
 
 import React from 'react'
 import { connect } from 'react-redux'
 
-let InventoryList = ({items, handleInputChange}) => {
+const getSelectedItem = (items) => items.find(t => t.selected)
+
+let InventoryList = ({items, handleInputChange, handleSelectItem}) => {
   const style = {
     flex: 2
   }
@@ -16,11 +22,18 @@ let InventoryList = ({items, handleInputChange}) => {
       <div className="card">
         <div className="card-header">
           <h1>Inventory</h1>
-          <ItemAdder />
+          <span>
+            <ItemAdder />
+            {getSelectedItem(items) && <ItemEditor item={getSelectedItem(items)}/>}
+            <ItemRemover />
+          </span>
         </div>
         <table>
           <thead>
             <tr>
+              <th>
+                <ItemSelector disabled={true} />
+              </th>
               <th>Item</th>
               <th className="numeric">Unit Cost</th>
               <th className="numeric">Unit Price</th>
@@ -30,7 +43,8 @@ let InventoryList = ({items, handleInputChange}) => {
           </thead>
           <tbody>
             {items.map(item => <InventoryItem key={item.id} {...item}
-              handleInputChange={ partial(handleInputChange, item.id) }
+              handleInputChange={ partial(handleInputChange, item.id)}
+              handleSelectItem={ partial(handleSelectItem, item.id) }
             />)}
           </tbody>
         </table>
@@ -44,6 +58,7 @@ const mapStateToProps = (state) => state
 const mapDispatchToProps = (dispatch) => {
   return {
     handleInputChange: (id, evt) => dispatch(changeSelected(id, evt.target.value)),
+    handleSelectItem: (id) => dispatch(toggleSelectItem(id)),
   }
 }
 
