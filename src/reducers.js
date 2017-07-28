@@ -130,7 +130,8 @@ export const history = (state, action) => {
           id: historyId++,
           name: action.name,
           qty: parseInt(action.qty, 10),
-          mode: action.mode,
+          status: action.status,
+          date: action.date,
         }
     default:
       return state

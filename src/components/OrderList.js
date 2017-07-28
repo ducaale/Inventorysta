@@ -24,12 +24,12 @@ export const OrderList = ({
   const handleClick = () => {
     if(inventoryPage === 'SELL_PAGE' ) {
       selectedItems.forEach((item) => {
-        handleAddHistory(item.name, item.selectedAmount, 'out')
+        handleAddHistory(item.name, item.selectedAmount, 'out', (new Date().toDateString()))
       })
       handleSubmitOrder()
     } else {
       selectedItems.forEach((item) => {
-        handleAddHistory(item.name, item.selectedAmount, 'in')
+        handleAddHistory(item.name, item.selectedAmount, 'in', (new Date().toDateString()))
       })
       handleSubmitResupply()
     }
@@ -73,7 +73,7 @@ const mapDispatchToProps = (dispatch) => {
     handleRemoveSelected: (id) => dispatch(resetSelection(id)),
     handleSubmitOrder: () => dispatch(submitOrder()),
     handleSubmitResupply: () => dispatch(submitResupply()),
-    handleAddHistory: (name, qty, mode) => dispatch(addHistory(name, qty, mode)),
+    handleAddHistory: (name, qty, status, date) => dispatch(addHistory(name, qty, status, date)),
   }
 }
 
