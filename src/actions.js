@@ -21,3 +21,5 @@ export const toggleSelectItem = (id) => ({ type: 'TOGGLE_SELECT_ITEM', id })
 export const removeItem = () => ({ type: 'REMOVE_ITEM' })
 
 export const editItem = (id, name, unitCost, unitPrice, qty) => ({ type: 'EDIT_ITEM', id, name, unitCost, unitPrice, qty })
+
+export const addHistory = (name, qty, mode) => ({ type: 'ADD_HISTORY', name, qty, mode })

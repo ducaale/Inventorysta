@@ -2,7 +2,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { RaisedButton } from 'material-ui'
 import { OrderItem } from './OrderItem'
 import { partial } from '../lib/utils'
-import { resetSelection, submitOrder, submitResupply } from '../actions'
+import { resetSelection, submitOrder, submitResupply, addHistory } from '../actions'
 
 import React from 'react'
 import { connect } from 'react-redux'
@@ -12,7 +12,8 @@ export const OrderList = ({
   inventoryPage,
   handleRemoveSelected,
   handleSubmitOrder,
-  handleSubmitResupply
+  handleSubmitResupply,
+  handleAddHistory
 }) => {
 
   const buttonStyle = {
@@ -20,7 +21,19 @@ export const OrderList = ({
   }
 
   const header = inventoryPage === 'SELL_PAGE' ? 'Check-out' : 'Check-in'
-  const handleClick = inventoryPage === 'SELL_PAGE' ? handleSubmitOrder : handleSubmitResupply
+  const handleClick = () => {
+    if(inventoryPage === 'SELL_PAGE' ) {
+      selectedItems.forEach((item) => {
+        handleAddHistory(item.name, item.selectedAmount, 'out')
+      })
+      handleSubmitOrder()
+    } else {
+      selectedItems.forEach((item) => {
+        handleAddHistory(item.name, item.selectedAmount, 'in')
+      })
+      handleSubmitResupply()
+    }
+  }
 
   return (
     <div className="order">
@@ -60,6 +73,7 @@ const mapDispatchToProps = (dispatch) => {
     handleRemoveSelected: (id) => dispatch(resetSelection(id)),
     handleSubmitOrder: () => dispatch(submitOrder()),
     handleSubmitResupply: () => dispatch(submitResupply()),
+    handleAddHistory: (name, qty, mode) => dispatch(addHistory(name, qty, mode)),
   }
 }
 

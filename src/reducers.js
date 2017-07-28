@@ -1,12 +1,12 @@
-const initialState = JSON.parse(localStorage.getItem('items')) || []
+const initialItemsState = JSON.parse(localStorage.getItem('items')) || []
 
-let id = initialState.length > 0 ? initialState[initialState.length - 1].id + 1 : 1
+let itemId = initialItemsState.length > 0 ? initialItemsState[initialItemsState.length - 1].id + 1 : 1
 
 const item = (state, action) => {
   switch(action.type) {
     case 'ADD_ITEM':
       return {
-        id: id++,
+        id: itemId++,
         name: action.name,
         qty: parseInt(action.qty, 10),
         unitCost: parseFloat(action.unitCost, 10),
@@ -59,20 +59,20 @@ const item = (state, action) => {
       return {
         ...state,
         qty: state.qty - state.selectedAmount,
-        selectedAmount: 0
+        selectedAmount: 0,
       }
     case 'SUBMIT_RESUPPLY':
       return {
         ...state,
         qty: state.qty + state.selectedAmount,
-        selectedAmount: 0
+        selectedAmount: 0,
       }
     default:
       return state
   }
 }
 
-export const items = (state = initialState, action) => {
+export const items = (state = initialItemsState, action) => {
   switch(action.type) {
     case 'ADD_ITEM':
       return [
@@ -115,6 +115,35 @@ export const editItemDialog = (state = false, action) => {
   switch(action.type) {
     case 'TOGGLE_EDIT_ITEM_DIALOG':
       return state = !state
+    default:
+      return state
+  }
+}
+
+const initialHistorysState = JSON.parse(localStorage.getItem('historys')) || []
+let historyId = initialHistorysState.length > 0 ? initialHistorysState[initialHistorysState.length - 1].id + 1 : 1
+
+export const history = (state, action) => {
+  switch(action.type) {
+      case 'ADD_HISTORY':
+        return {
+          id: historyId++,
+          name: action.name,
+          qty: parseInt(action.qty, 10),
+          mode: action.mode,
+        }
+    default:
+      return state
+  }
+}
+
+export const historys = (state = initialHistorysState, action) => {
+  switch(action.type) {
+    case 'ADD_HISTORY':
+      return [
+        ...state,
+        history(undefined, action)
+      ]
     default:
       return state
   }
