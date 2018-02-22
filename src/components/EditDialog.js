@@ -31,9 +31,11 @@ export const EditDialog = ({open, handleToggleDialog, handleEditItem, item}) => 
     underlineStyle: {
       borderColor: 'rgba(0,0,0,0.4)'
     },
+    form: {
+      display: 'flex'
+    },
     style: {
       marginLeft: 24,
-      width:  100
     }
   }
 
@@ -43,38 +45,42 @@ export const EditDialog = ({open, handleToggleDialog, handleEditItem, item}) => 
       actions={actions}
       modal={false}
       open={open}
-      onRequestClose={handleToggleDialog} 
+      onRequestClose={handleToggleDialog}
     >
-      <TextField hintText="name" 
-        defaultValue={item.name}
-        onChange={(evt) => editedItem.name = evt.target.value }
-        autoFocus 
-        hintStyle={styles.hintStyle} 
-        underlineStyle={styles.underlineStyle} />
 
-      <TextField hintText="unit cost"
-        defaultValue={item.unitCost}
-        onChange={(evt) => editedItem.unitCost = evt.target.value}
-        type="number"
-        style={styles.style}
-        hintStyle={styles.hintStyle}
-        underlineStyle={styles.underlineStyle} />
+      <div style={styles.form}>
+        <TextField hintText="name"
+          defaultValue={item.name}
+          onChange={(evt) => editedItem.name = evt.target.value }
+          autoFocus
+          hintStyle={styles.hintStyle}
+          underlineStyle={styles.underlineStyle} />
 
-      <TextField hintText="unit price"
-        defaultValue={item.unitPrice}
-        onChange={(evt) => editedItem.unitPrice = evt.target.value}
-        type="number"
-        style={styles.style}
-        hintStyle={styles.hintStyle}
-        underlineStyle={styles.underlineStyle} />
+        <TextField hintText="unit cost"
+          defaultValue={item.unitCost}
+          onChange={(evt) => editedItem.unitCost = evt.target.value}
+          type="number"
+          style={styles.style}
+          hintStyle={styles.hintStyle}
+          underlineStyle={styles.underlineStyle} />
 
-      <TextField hintText="quantity"
-        defaultValue={item.qty}
-        onChange={(evt) => editedItem.qty = evt.target.value}
-        type="number"
-        style={styles.style}
-        hintStyle={styles.hintStyle}
-        underlineStyle={styles.underlineStyle} />
+        <TextField hintText="unit price"
+          defaultValue={item.unitPrice}
+          onChange={(evt) => editedItem.unitPrice = evt.target.value}
+          type="number"
+          style={styles.style}
+          hintStyle={styles.hintStyle}
+          underlineStyle={styles.underlineStyle} />
+
+        <TextField hintText="quantity"
+          defaultValue={item.qty}
+          onChange={(evt) => editedItem.qty = evt.target.value}
+          type="number"
+          style={styles.style}
+          hintStyle={styles.hintStyle}
+          underlineStyle={styles.underlineStyle} />
+      </div>
+
     </Dialog>
   )
 }

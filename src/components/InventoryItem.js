@@ -10,7 +10,6 @@ export const InventoryItem = ({
   qty, 
   selectedAmount, 
   selected, 
-  handleInputChange,
   handleSelectItem
 }) => {
 
@@ -23,11 +22,6 @@ export const InventoryItem = ({
       <td className="numeric">{unitCost}</td>
       <td className="numeric">{unitPrice}</td>
       <td className="numeric">{qty}</td>
-      <td className="numeric">
-        <input type="number" value={selectedAmount}
-          className="numeric"
-          onChange={handleInputChange}/>
-      </td>
     </tr>
   )
 }

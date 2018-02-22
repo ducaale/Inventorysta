@@ -5,6 +5,13 @@
   color: rgba(1, 1, 1, 0.87);
 }
 
+@media screen and (min-width: 900px) {
+    .AppContent {
+      width: 70%;
+      margin: 0 auto;
+    }
+}
+
 .nav-button {
   background: Transparent;
   border: none;
@@ -65,48 +72,27 @@ table input.numeric {
   border-radius: 2px;
 }
 
-.card-header, .card-header * {
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80px;
+}
+
+.card-header * {
   display: flex;
   justify-content: space-between;
-  align-content: center;
 }
 
 .card-header > * {
   margin: 16px 0;
 }
 
-ul {
-  list-style: none;
-}
-
-li, .card-header {
-  display: flex;
-  align-items: center;
-}
-
-.qty {
-  text-align: right;
-  flex: 1;
-}
-
-.order {
-  flex: 1;
-  padding-left: 86px;
-}
-
-.empty-message {
-  color: rgba(1, 1, 1, 0.54);
+.card-header h1 {
+  margin-left: 8px;
 }
 
 h1 {
   font-size: 24px;
   color: #607D8B;
-}
-
-ul {
-  padding: 0px;
-}
-
-li {
-  height: 36px;
 }

@@ -1,6 +1,6 @@
 import { InventoryItem } from './InventoryItem'
 import { partial } from '../lib/utils'
-import { changeSelected, toggleSelectItem } from '../actions'
+import { toggleSelectItem } from '../actions'
 
 
 import ItemAdder  from './ItemAdder'
@@ -38,12 +38,10 @@ let InventoryList = ({items, handleInputChange, handleSelectItem}) => {
               <th className="numeric">Unit Cost</th>
               <th className="numeric">Unit Price</th>
               <th className="numeric">Quantity</th>
-              <th className="numeric">Selected</th>
             </tr>
           </thead>
           <tbody>
             {items.map(item => <InventoryItem key={item.id} {...item}
-              handleInputChange={ partial(handleInputChange, item.id)}
               handleSelectItem={ partial(handleSelectItem, item.id) }
             />)}
           </tbody>
@@ -57,7 +55,6 @@ const mapStateToProps = (state) => state
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleInputChange: (id, evt) => dispatch(changeSelected(id, evt.target.value)),
     handleSelectItem: (id) => dispatch(toggleSelectItem(id)),
   }
 }

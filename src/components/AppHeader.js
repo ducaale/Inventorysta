@@ -8,14 +8,7 @@ import { connect } from 'react-redux'
 let AppHeader = ({inventoryPage}) => {
 
   const color = (inventoryPage) => {
-    switch(inventoryPage) {
-      case 'SELL_PAGE':
-        return "#0097A7"
-      case 'BUY_PAGE':
-        return "#009688"
-      case 'HISTORY_PAGE':
-        return "#607D8B"
-    }
+    return "#607D8B"
   }
 
   const style = {
@@ -34,9 +27,9 @@ let AppHeader = ({inventoryPage}) => {
         showMenuIconButton={false}
         titleStyle={style.title}
         style={style.bar}>
-        <PageLink page="BUY_PAGE">Buy</PageLink>
-        <PageLink page="SELL_PAGE">Sell</PageLink>
+        <PageLink page="INVENTORY_PAGE">Inventory</PageLink>
         <PageLink page="HISTORY_PAGE">History</PageLink>
+        <PageLink page="INVOICE_PAGE">Invoice</PageLink>
       </AppBar>
     </MuiThemeProvider>
   )
