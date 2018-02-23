@@ -128,8 +128,6 @@ let Invoice = ({
   const total = salesItems.map(salesItem => salesItem.amount)
     .reduce((a, b) => a + b, 0)
 
-  let paid = 0;
-
   return (
     <MuiThemeProvider>
       <div>

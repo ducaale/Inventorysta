@@ -1,5 +1,3 @@
-const initialItemsState = JSON.parse(localStorage.getItem('items')) || []
-
 const item = (state, action) => {
   switch(action.type) {
     case 'ADD_ITEM':
@@ -38,7 +36,7 @@ const item = (state, action) => {
   }
 }
 
-export const items = (state = initialItemsState, action) => {
+export const items = (state = [], action) => {
   switch(action.type) {
     case 'ADD_ITEM':
       return [
@@ -182,14 +180,11 @@ export const editItemDialog = (state = false, action) => {
   }
 }
 
-const initialHistorysState = JSON.parse(localStorage.getItem('historys')) || []
-let historyId = initialHistorysState.length > 0 ? initialHistorysState[initialHistorysState.length - 1].id + 1 : 1
-
 export const history = (state, action) => {
   switch(action.type) {
       case 'ADD_HISTORY':
         return {
-          id: historyId++,  // TODO fix this
+          id: action.id,
           name: action.name,
           qty: parseInt(action.qty, 10),
           status: action.status,
@@ -200,7 +195,7 @@ export const history = (state, action) => {
   }
 }
 
-export const historys = (state = initialHistorysState, action) => {
+export const historys = (state = [], action) => {
   switch(action.type) {
     case 'ADD_HISTORY':
       return [

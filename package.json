@@ -8,7 +8,9 @@
     "redux-thunk": "^2.2.0"
   },
   "dependencies": {
+    "lodash": "^4.17.5",
     "material-ui": "^0.17.3",
+    "node-uuid": "^1.4.8",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.6",
